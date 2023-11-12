@@ -1,20 +1,14 @@
-export type Estado =
-| "Juego de las siete media"
-| "Has sido muy conservador"
-| "Te ha entrado el canguelo eh?"
-| "Casi casi..."
-| "¡Lo has clavado! ¡Enhorabuena!"
-| "Game Over";
-
-interface partida {
+interface Partida {
     puntos:number;
     mensaje: string;
     carta:number;
     numeroAleatorio:number;
+    iniciarPartida():void;
 }
-export const partida ={
+export const partida: Partida ={
     puntos: 0,
     mensaje: "",
     carta:0,
-    numeroAleatorio: 0
+    numeroAleatorio: 0,
+    iniciarPartida(){}
 }

@@ -15,6 +15,8 @@ const iniciarPartida = (): void =>{
     muestraPuntuacion();
     eventos();
 }
+partida.iniciarPartida = iniciarPartida;
+
 const muestraPuntuacion = (): void => {
     if (divPuntuacion && divPuntuacion instanceof HTMLDivElement) {
       divPuntuacion.textContent = partida.puntos.toString();
