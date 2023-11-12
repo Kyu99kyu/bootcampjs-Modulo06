@@ -1,3 +1,4 @@
+import "./style.css";
 import {partida } from "./modelo";
 import { generarCarta, generarValorCarta, obtenerMensajeSegunPuntos } from "./motor"
 export{iniciarPartida}
