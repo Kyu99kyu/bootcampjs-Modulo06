@@ -1,7 +1,4 @@
 import "./style.css";
-import {muestraPuntuacion,eventos} from "./ui";
+import {iniciarPartida} from "./ui";
 
-document.addEventListener("DOMContentLoaded", () => {
-  muestraPuntuacion();
-  eventos();
-});
+document.addEventListener("DOMContentLoaded", iniciarPartida);

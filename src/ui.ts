@@ -1,6 +1,6 @@
 import {partida } from "./modelo";
 import { generarCarta, generarValorCarta, obtenerMensajeSegunPuntos } from "./motor"
-export{muestraPuntuacion, eventos}
+export{iniciarPartida}
 
 const divPuntuacion = document.getElementById("puntuacion");
 const btnPlantarse= document.getElementById("plantarse");
@@ -10,6 +10,10 @@ const btnNueva = document.getElementById("nueva");
 const imagenCarta = document.getElementById("imagenCarta");
 const btnFuturo = document.getElementById("futuro");
 
+const iniciarPartida = (): void =>{
+    muestraPuntuacion();
+    eventos();
+}
 const muestraPuntuacion = (): void => {
     if (divPuntuacion && divPuntuacion instanceof HTMLDivElement) {
       divPuntuacion.textContent = partida.puntos.toString();
