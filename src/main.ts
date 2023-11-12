@@ -1,6 +1,6 @@
 import "./style.css";
+import {partida } from "./modelo";
 
-let puntos: number = 0;
 const divPuntuacion = document.getElementById("puntuacion");
 const btnPlantarse= document.getElementById("plantarse");
 const titulo = document.getElementById("titulo");
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const muestraPuntuacion = (): void => {
   if (divPuntuacion && divPuntuacion instanceof HTMLDivElement) {
-    divPuntuacion.textContent = puntos.toString();
+    divPuntuacion.textContent = partida.puntos.toString();
   } else {
     console.error("No se ha encontrado el elemento puntuación");
   }
@@ -53,13 +53,13 @@ const reset = (): void => {
     titulo instanceof HTMLHeadingElement &&
     imagenCarta instanceof HTMLImageElement
   ) {
-    puntos = 0;
+    partida.puntos = 0;
     muestraPuntuacion();
     activarBotones();
-    const mensaje: string = obtenerMensajeSegunPuntos(puntos);
-    actualizarTitulo(mensaje);
-    const carta: number = 0;
-    mostrarCarta(carta);
+    partida.mensaje = obtenerMensajeSegunPuntos(partida.puntos);
+    actualizarTitulo(partida.mensaje);
+    partida.carta = 0;
+    mostrarCarta(partida.carta);
     btnFuturo.hidden = true;
   } else {
     console.error("No se ha encontrado el elemento puntuación");
@@ -67,15 +67,15 @@ const reset = (): void => {
 };
 
 const dameCarta = (): void => {
-  let carta: number = generarCarta();
-  puntos += generarValorCarta(carta);
-  mostrarCarta(carta);
+  partida.carta = generarCarta();
+  partida.puntos += generarValorCarta(partida.carta);
+  mostrarCarta(partida.carta);
 };
 
 const plantarse = (): void => {
   if (btnFuturo instanceof HTMLButtonElement && titulo instanceof HTMLHeadingElement) {
-    const mensaje: string = obtenerMensajeSegunPuntos(puntos);
-    actualizarTitulo(mensaje);
+    partida.mensaje = obtenerMensajeSegunPuntos(partida.puntos);
+    actualizarTitulo(partida.mensaje);
     desactivarBotones();
     btnFuturo.hidden = false;
   } else {
@@ -97,13 +97,13 @@ const generarNumeroAleatorio = (): number => {
 };
 
 const generarCarta = (): number => {
-  const numeroAleatorio: number = generarNumeroAleatorio();
-  return numeroAleatorio > 7 ? numeroAleatorio + 2 : numeroAleatorio;
+  partida.numeroAleatorio = generarNumeroAleatorio();
+  return partida.numeroAleatorio > 7 ? partida.numeroAleatorio + 2 : partida.numeroAleatorio;
 };
 
 const generarValorCarta = (valorCarta: number): number => {
-  puntos = valorCarta >= 10 ? 0.5 : valorCarta;
-  return puntos;
+  partida.puntos = valorCarta >= 10 ? 0.5 : valorCarta;
+  return partida.puntos;
 };
 
 const obtenerMensajeSegunPuntos = (puntos: number): string => {
